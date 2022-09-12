@@ -1,0 +1,19 @@
+version: "3"
+services:
+    nginx-server:
+        build:
+            context: ./nginx-server
+        volumes:
+            - ./nginx-server/conf.d:/etc/nginx/conf.d
+            - ./nginx-server/log:/var/log/nginx
+        ports:
+            - 80:80
+
+    tomcat-server:
+        build:
+            context: ./tomcat-server
+        volumes:
+            - ./tomcat-server/webapps:/usr/local/tomcat/webapps
+            - ./tomcat-server/log:/usr/local/tomcat/logs
+        ports:
+            - 8080:8080
