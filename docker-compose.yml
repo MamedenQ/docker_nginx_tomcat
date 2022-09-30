@@ -4,16 +4,41 @@ services:
         build:
             context: ./nginx-server
         volumes:
-            - ./nginx-server/conf.d:/etc/nginx/conf.d
             - ./nginx-server/log:/var/log/nginx
+        expose:
+            - 80
         ports:
             - 80:80
 
-    tomcat-server:
+    tomcat-server-1:
         build:
-            context: ./tomcat-server
+            context: ./tomcat-server1
         volumes:
-            - ./tomcat-server/webapps:/usr/local/tomcat/webapps
-            - ./tomcat-server/log:/usr/local/tomcat/logs
+            - ./tomcat-server1/webapps:/usr/local/tomcat/webapps
+            - ./tomcat-server1/log:/usr/local/tomcat/logs
+        expose:
+            - 8080
         ports:
             - 8080:8080
+
+    tomcat-server-2:
+        build:
+            context: ./tomcat-server2
+        volumes:
+            - ./tomcat-server2/webapps:/usr/local/tomcat/webapps
+            - ./tomcat-server2/log:/usr/local/tomcat/logs
+        expose:
+            - 8081
+        ports:
+            - 8081:8081
+
+    tomcat-server-3:
+        build:
+            context: ./tomcat-server3
+        volumes:
+            - ./tomcat-server3/webapps:/usr/local/tomcat/webapps
+            - ./tomcat-server3/log:/usr/local/tomcat/logs
+        expose:
+            - 8082
+        ports:
+            - 8082:8082

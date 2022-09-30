@@ -1,3 +1,3 @@
 nginx-server/log
-tomcat-server/log
+tomcat-server?/log*
 .DS_Store
